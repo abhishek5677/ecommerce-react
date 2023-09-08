@@ -13,6 +13,7 @@ function ProductDetails() {
 
     const productIndex = location.state;
     const product = globalState.items[productIndex.productIndex];
+    console.log(product)
 
   // const addProducts = (item) => {
   //   setGlobalState((prevState) => {

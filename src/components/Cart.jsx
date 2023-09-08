@@ -29,7 +29,7 @@ const CardCheckout = ({ image, title }) => {
 
 function Cart() {
 
-    const { globalState } = useGlobalState();
+    const { globalState } = useGlobalState();c
 
     globalState.cart.map(ele => {
         console.log(ele)
