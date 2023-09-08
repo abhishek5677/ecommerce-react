@@ -13,6 +13,9 @@ const CardCheckout = ({ image, title }) => {
                     <img src={image} alt="" height={100} width={100} />
                 </div>
                 <div>
+                    <img src={image} alt="" height={100} width={100} />
+                </div>
+                <div>
                     <p>{title}</p>
                     <div className='d-flex justify-content-center align-items-center'>
                         <button>-</button>
