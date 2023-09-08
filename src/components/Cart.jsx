@@ -19,6 +19,11 @@ const CardCheckout = ({ image, title }) => {
                         <span>1</span>
                         <button>+</button>
                     </div>
+                    <div className='d-flex justify-content-center align-items-center'>
+                        <button>-</button>
+                        <span>1</span>
+                        <button>+</button>
+                    </div>
                 </div>
             </div>
             <button className='btn btn-danger'>Remove</button>
