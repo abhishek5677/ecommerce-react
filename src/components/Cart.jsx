@@ -52,7 +52,7 @@ function Cart() {
                                     </div>
                                     <div className='d-flex justify-content-between delivery-details'>
                                         <p className='m-0'>Delivery Charges</p>
-                                        <p className='text-success m-0'>Free</p>
+                                          <p className='text-success m-0'>Free</p>
                                     </div>
                                     <div className='d-flex justify-content-between total-amount'>
                                         <p className='m-0'>Total Amount</p>

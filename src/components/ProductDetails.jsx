@@ -13,30 +13,55 @@ function ProductDetails() {
 
     const productIndex = location.state;
     const product = globalState.items[productIndex.productIndex];
-    console.log(product)
 
+  // const addProducts = (item) => {
+  //   setGlobalState((prevState) => {
+  //     notify()
+  //     // Check if the item with the same ID already exists in the cart
+  //     const itemExists = prevState.cart.some((cartItem) => cartItem.id === item.id);
+
+  //     // If the item doesn't exist, add it to the cart
+  //     if (!itemExists) {
+  //       return {
+  //         ...prevState,
+  //         cart: [...prevState.cart, item],
+  //       };
+  //     }
+
+  //     console.log(prevState)
+  //     // If the item already exists, return the previous state without making any changes
+  //     return prevState;
+
+
+  //   });
+  // };
+    
   const addProducts = (item) => {
     setGlobalState((prevState) => {
-      notify()
+      notify();
       // Check if the item with the same ID already exists in the cart
-      const itemExists = prevState.cart.some((cartItem) => cartItem.id === item.id);
+      const itemIndex = prevState.cart.findIndex((cartItem) => cartItem.id === item.id);
 
       // If the item doesn't exist, add it to the cart
-      if (!itemExists) {
+      if (itemIndex === -1) {
         return {
           ...prevState,
-          cart: [...prevState.cart, item],
+          cart: [...prevState.cart, { ...item, count: 1 }],
         };
       }
-  
-      console.log(prevState)
-      // If the item already exists, return the previous state without making any changes
-      return prevState;
 
+      // If the item already exists, increase its count
+      const updatedCart = [...prevState.cart];
+      updatedCart[itemIndex].count += 1;
 
+      return {
+        ...prevState,
+        cart: updatedCart,
+      };
     });
   };
-    
+
+
   return (
     <div className="container">
       <Navbar />
