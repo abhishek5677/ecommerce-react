@@ -27,7 +27,7 @@ code {
 }
 
 .checkout-card{
-  height: 150px;
+  height: fit-content !important;
 }
 
 .checkout-card .price-details{

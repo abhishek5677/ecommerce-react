@@ -1,5 +1,5 @@
 import React from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { useGlobalState } from '../Global/GlobalState';
 import Navbar from './Navbar';
 import { ToastContainer, toast } from 'react-toastify';
@@ -10,57 +10,34 @@ function ProductDetails() {
     const {globalState, setGlobalState} = useGlobalState();
 
     const notify = () => toast("Item added");
+    const navigate = useNavigate();
 
     const productIndex = location.state;
     const product = globalState.items[productIndex.productIndex];
     console.log(product)
 
-  // const addProducts = (item) => {
-  //   setGlobalState((prevState) => {
-  //     notify()
-  //     // Check if the item with the same ID already exists in the cart
-  //     const itemExists = prevState.cart.some((cartItem) => cartItem.id === item.id);
-
-  //     // If the item doesn't exist, add it to the cart
-  //     if (!itemExists) {
-  //       return {
-  //         ...prevState,
-  //         cart: [...prevState.cart, item],
-  //       };
-  //     }
-
-  //     console.log(prevState)
-  //     // If the item already exists, return the previous state without making any changes
-  //     return prevState;
-
-
-  //   });
-  // };
+    const addProducts = (item) => {
+      setGlobalState((prevState) => {
+        notify();
+        navigate('/cart');
     
-  const addProducts = (item) => {
-    setGlobalState((prevState) => {
-      notify();
-      // Check if the item with the same ID already exists in the cart
-      const itemIndex = prevState.cart.findIndex((cartItem) => cartItem.id === item.id);
-
-      // If the item doesn't exist, add it to the cart
-      if (itemIndex === -1) {
-        return {
-          ...prevState,
-          cart: [...prevState.cart, { ...item, count: 1 }],
-        };
-      }
-
-      // If the item already exists, increase its count
-      const updatedCart = [...prevState.cart];
-      updatedCart[itemIndex].count += 1;
-
-      return {
-        ...prevState,
-        cart: updatedCart,
-      };
-    });
-  };
+        // Check if the item with the same ID already exists in the cart
+        const itemExists = prevState.cart.some((cartItem) => cartItem.id === item.id);
+    
+        // If the item doesn't exist, add it to the cart with a quantity of 1
+        if (!itemExists) {
+          const newItem = { ...item, quantity: 1 };
+          return {
+            ...prevState,
+            cart: [...prevState.cart, newItem],
+          };
+        }
+    
+        // If the item already exists, return the previous state without making any changes
+        return prevState;
+      });
+    };
+    
 
 
   return (

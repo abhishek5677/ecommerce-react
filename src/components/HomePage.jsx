@@ -4,7 +4,6 @@ import Navbar from './Navbar';
 import { Link } from "react-router-dom";
 
 function HomePage() {
-  // const [items, setItems] = useState([])
   const { globalState, setGlobalState } = useGlobalState();
 
   useEffect(() => {
@@ -39,7 +38,7 @@ function HomePage() {
                       </div>
                     </div>
                   </Link>
-              )
+                )
             })
           }
         </div>
